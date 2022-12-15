@@ -1,20 +1,22 @@
 package info;
 
-public class Director {
+public class Director implements Comparable<Director>{
     private String fullName;
-
-    public Director(String fullName){
-        this.fullName = fullName;
-    }
 
     public String getFullName(){
         return fullName;
     }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     @Override
     public String toString() {
-        return "Info.Movie{" +
-                "full name=" + fullName +
-                '}';
+        return fullName;
+
+    }
+    @Override
+    public int compareTo(Director o) {
+        return this.getFullName().compareTo(o.getFullName());
     }
 }
