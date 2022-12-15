@@ -3,23 +3,26 @@ package info;
 import com.google.gson.Gson;
 import util.FileService;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class Cinema {
+    private ArrayList<Movie> movies;
 
     public Cinema() {
     }
 
     public void run() {
-        FileService<MovieCollection> parser = new FileService(MovieCollection.class);
-        List<MovieCollection> collections = parser.readJson("data/movies.json");
+        FileService fileService = new FileService();
+        MovieCollection movieCollection = fileService.readFile();
+        System.out.println(movieCollection.getMovies().toString());
 
-        Iterator<MovieCollection> it = collections.iterator();
-        while(it.hasNext()){
-            System.out.println(it.next());
-        }
-
+        //int index = Collections.binarySearch(movieCollection, 5)
     }
 
 }
